@@ -1,0 +1,50 @@
+<h1> Simple Web Crawler </h1>
+
+<p> Insert Url </p>
+<input type='text' name='url' value='http://'>
+
+
+<p> Element </p>
+<input type='text' name='element'>
+
+
+
+<br><br>
+
+<button id='get_element'> Get Element </button>
+
+<br> <br>
+
+<div id='loading' style='display:none'> Parsing it! </div>
+<div id='result'> </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<script> 
+
+$(function() {
+
+ 
+
+   
+
+	$('#get_element').on('click', function() {
+
+		 var url = $('[name="url"]').val();
+         var element = $('[name="element"]').val();
+         $('#loading').show();
+         $('#result').html('');
+
+         $.get( "ajax.php", { parse_url: url, parse_element: element } )
+         .done(function( data ) {
+
+            $('#loading').hide();
+            $('#result').html('<p> Result: </p>: '+data)
+     });
+	})
+})
+
+
+</script>
+
